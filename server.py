@@ -6,16 +6,12 @@ hostName = "localhost"
 serverPort = 8080
 
 class MyServer(BaseHTTPRequestHandler):
-    def send_dict_as_json(self, dict):
-        self.wfile.write(bytes(str(dict), "utf-8"))
+   
 
     def do_GET(self):
         self.send_response(200)
         self.send_header("Content-type", "application/json")
-        self.send_dict_as_json({
-            "type": "int",
-            "data": 4
-        })
+      
         self.end_headers()
 
 if __name__ == "__main__":        
