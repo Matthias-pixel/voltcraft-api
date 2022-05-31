@@ -1,4 +1,4 @@
-# Python 3 server example
+#!/usr/bin/python3
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import time
 
