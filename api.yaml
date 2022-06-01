@@ -17,3 +17,81 @@ paths:
       responses:
         200:
           description: OK
+
+  /list:
+    get:
+      summary: Returns a list of all outlets.
+      description: d
+      produces:
+        - application/json
+      operationId: listOutlets
+      tags:
+        - list
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+
+  /on/{alias}:
+    get:
+      summary: turns on an outlet.
+      description: d
+      produces:
+        - application/json
+      operationId: powerOn
+      tags:
+        - powerOn
+      produces:
+        - application/json
+      parameters:
+        - name: alias
+          in: path
+          description: outlet alias
+          type: string
+          required: true
+      responses:
+        200:
+          description: OK
+
+  /off/{alias}:
+    get:
+      summary: turns off an outlet.
+      description: d
+      produces:
+        - application/json 
+      operationId: powerOff
+      tags:
+        - powerOff
+      produces:
+        - application/json
+      parameters:
+        - name: alias
+          in: path
+          description: outlet alias
+          type: string
+          required: true
+      responses:
+        200:
+          description: OK     
+
+  /info/{alias}:
+    get:
+      summary:  Returns measurement data from an outlet.
+      description: d
+      produces:
+        - application/json
+      operationId: getInfo
+      tags:
+        - info
+      produces:
+        - application/json
+      parameters:
+        - name: alias
+          in: path
+          description: outlet alias
+          type: string
+          required: true
+      responses:
+        200:
+          description: OK       
