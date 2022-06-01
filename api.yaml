@@ -107,4 +107,21 @@ paths:
         200:
           description: OK   
           schema:
-            type: boolean    
+            type: object  
+            properties: 
+              current:
+                type: int
+
+              frequency:
+                type: int
+
+              active:
+                type: boolean
+
+              power:
+                type: int
+
+              voltage:
+                type: int
+
+               

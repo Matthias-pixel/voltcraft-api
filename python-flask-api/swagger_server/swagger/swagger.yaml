@@ -16,7 +16,112 @@ paths:
           description: OK
           content: {}
       x-openapi-router-controller: swagger_server.controllers.default_controller
+  /list:
+    get:
+      tags:
+      - list
+      summary: Returns a list of all outlets.
+      description: d
+      operationId: list_outlets
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Outlet'
+                x-content-type: application/json
+      x-openapi-router-controller: swagger_server.controllers.list_controller
+  /on/{alias}:
+    get:
+      tags:
+      - powerOn
+      summary: turns on an outlet.
+      description: d
+      operationId: power_on
+      parameters:
+      - name: alias
+        in: path
+        description: outlet alias
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: boolean
+                x-content-type: application/json
+      x-openapi-router-controller: swagger_server.controllers.power_on_controller
+  /off/{alias}:
+    get:
+      tags:
+      - powerOff
+      summary: turns off an outlet.
+      description: d
+      operationId: power_off
+      parameters:
+      - name: alias
+        in: path
+        description: outlet alias
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: boolean
+                x-content-type: application/json
+      x-openapi-router-controller: swagger_server.controllers.power_off_controller
+  /info/{alias}:
+    get:
+      tags:
+      - info
+      summary: Returns measurement data from an outlet.
+      description: d
+      operationId: get_info
+      parameters:
+      - name: alias
+        in: path
+        description: outlet alias
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: boolean
+                x-content-type: application/json
+      x-openapi-router-controller: swagger_server.controllers.info_controller
 components:
-  schemas: {}
+  schemas:
+    Outlet:
+      type: object
+      properties:
+        mac-address:
+          type: string
+          description: Mac address of the outlet.
+        alias:
+          type: string
+          description: Alias of the outlet
+      example:
+        mac-address: mac-address
+        alias: alias
 x-original-swagger-version: "2.0"
 
