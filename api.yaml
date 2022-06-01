@@ -27,8 +27,6 @@ paths:
       operationId: listOutlets
       tags:
         - list
-      produces:
-        - application/json
       responses:
         200:
           description: OK
@@ -42,8 +40,6 @@ paths:
       operationId: powerOn
       tags:
         - powerOn
-      produces:
-        - application/json
       parameters:
         - name: alias
           in: path
@@ -63,8 +59,6 @@ paths:
       operationId: powerOff
       tags:
         - powerOff
-      produces:
-        - application/json
       parameters:
         - name: alias
           in: path
@@ -84,8 +78,6 @@ paths:
       operationId: getInfo
       tags:
         - info
-      produces:
-        - application/json
       parameters:
         - name: alias
           in: path
