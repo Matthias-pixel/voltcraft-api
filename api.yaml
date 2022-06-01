@@ -7,6 +7,16 @@ host: api.example.com
 basePath: /v1
 schemes:
   - https
+definitions:
+  Outlet:
+    type: object
+    properties:
+      mac-address:
+        type: string
+        description: Mac address of the outlet.
+      alias:
+        type: string
+        description: Alias of the outlet
 paths:
   /users:
     get:
@@ -30,6 +40,11 @@ paths:
       responses:
         200:
           description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Outlet'
+            
 
   /on/{alias}:
     get:
@@ -49,6 +64,8 @@ paths:
       responses:
         200:
           description: OK
+          schema:
+            type: boolean
 
   /off/{alias}:
     get:
@@ -67,7 +84,9 @@ paths:
           required: true
       responses:
         200:
-          description: OK     
+          description: OK  
+          schema:
+            type: boolean
 
   /info/{alias}:
     get:
@@ -86,4 +105,6 @@ paths:
           required: true
       responses:
         200:
-          description: OK       
+          description: OK   
+          schema:
+            type: boolean    
