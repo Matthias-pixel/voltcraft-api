@@ -18,16 +18,6 @@ definitions:
         type: string
         description: Alias of the outlet
 paths:
-  /users:
-    get:
-      summary: Returns a list of users.
-      description: Optional extended description in Markdown.
-      produces:
-        - application/json
-      responses:
-        200:
-          description: OK
-
   /list:
     get:
       summary: Returns a list of all outlets.
@@ -110,18 +100,18 @@ paths:
             type: object  
             properties: 
               current:
-                type: int
+                type: integer
 
               frequency:
-                type: int
+                type: integer
 
               active:
                 type: boolean
 
               power:
-                type: int
+                type: integer
 
               voltage:
-                type: int
+                type: integer
 
                

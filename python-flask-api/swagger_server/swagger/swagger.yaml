@@ -6,16 +6,6 @@ info:
 servers:
 - url: https://api.example.com/v1
 paths:
-  /users:
-    get:
-      summary: Returns a list of users.
-      description: Optional extended description in Markdown.
-      operationId: users_get
-      responses:
-        "200":
-          description: OK
-          content: {}
-      x-openapi-router-controller: swagger_server.controllers.default_controller
   /list:
     get:
       tags:
@@ -106,8 +96,7 @@ paths:
           content:
             application/json:
               schema:
-                type: boolean
-                x-content-type: application/json
+                $ref: '#/components/schemas/inline_response_200'
       x-openapi-router-controller: swagger_server.controllers.info_controller
 components:
   schemas:
@@ -123,5 +112,24 @@ components:
       example:
         mac-address: mac-address
         alias: alias
+    inline_response_200:
+      type: object
+      properties:
+        current:
+          type: integer
+        frequency:
+          type: integer
+        active:
+          type: boolean
+        power:
+          type: integer
+        voltage:
+          type: integer
+      example:
+        current: 0
+        active: true
+        power: 1
+        frequency: 6
+        voltage: 5
 x-original-swagger-version: "2.0"
 
