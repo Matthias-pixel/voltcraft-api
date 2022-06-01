@@ -4,16 +4,12 @@ from sem6000 import sem6000
 from sem6000.bluetooth_lowenergy_interface.bluepy_interface import BluePyBtLeInterface
 from swagger_server.models.inline_response200 import InlineResponse200  # noqa: E501
 from swagger_server import util
-import yaml
+from connections import outlets, get_device
 
 def get_info(alias):  # noqa: E501
-    outlets={}
-    with open("../config.yaml", "r") as config_file:
-        config = yaml.full_load(config_file)
-        outlets = config["outlets"]
     try:
-        dev = sem6000.SEM6000(deviceAddr=outlets[alias])
-        dev.authorize("0000")
+        addr = outlets[alias]
+        dev = get_device(addr)
         m = dev.request_measurement()
         return { 
             'current': m.current_in_milliampere,

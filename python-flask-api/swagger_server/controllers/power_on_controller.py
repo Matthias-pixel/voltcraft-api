@@ -1,19 +1,14 @@
 import connexion
 import six
-import time, yaml
-from sem6000 import sem6000
-from sem6000.bluetooth_lowenergy_interface.bluepy_interface import BluePyBtLeInterface
+import time
 from swagger_server import util
-
+from connections import outlets, get_device
 
 def power_on(alias):  # noqa: E501 
-    outlets={}
-    with open("../config.yaml", "r") as config_file:
-        config = yaml.full_load(config_file)
-        outlets = config["outlets"]
+    global outlets, devices  
     try:
-        dev = sem6000.SEM6000(deviceAddr=outlets[alias])
-        dev.authorize("0000")
+        addr = outlets[alias]
+        dev = get_device(addr)
         dev.power_on()
         return True
     except:
