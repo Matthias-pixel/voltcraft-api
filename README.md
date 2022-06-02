@@ -25,7 +25,7 @@ $ pip3 install -r requirements.txt
 ```
 
 ### 3. Start server
-1. Go into the python-flask-api directory
+1. Go into the server directory
 ```
 $ cd server
 ```
