@@ -37,7 +37,7 @@ $ python3 -m swagger_server
 
 ## Usage
 ### 1. Configure server
-1. Configure aliases in config.yaml
+    Configure aliases in config.yaml
 
 ### 2. Turn an outlet on
     GET /v1/on/{alias}
