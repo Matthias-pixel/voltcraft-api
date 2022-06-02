@@ -1,4 +1,4 @@
 [submodule "sem6000"]
-	path = python-flask-api/sem6000
+	path = server/sem6000
 	url = https://github.com/Matthias-pixel/python3-voltcraft-sem6000.git
 	branch = fix-length-parsing
