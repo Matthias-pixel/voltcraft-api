@@ -1,7 +1,7 @@
 import connexion
 import six
 import time
-from swagger_server import util
+from voltcraft_api import util
 from connections import get_address, get_device, UnknownAliasException
 
 def power_off(alias):  

@@ -1,10 +1,10 @@
 openapi: 3.0.1
 info:
-  title: Sample API
+  title: Voltcraft API
   description: API description in Markdown.
   version: 1.0.0
 servers:
-- url: https://api.example.com/v1
+- url: http://localhost:8080/v1
 paths:
   /list:
     get:
@@ -23,7 +23,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Outlet'
                 x-content-type: application/json
-      x-openapi-router-controller: swagger_server.controllers.list_controller
+      x-openapi-router-controller: voltcraft_api.controllers.list_controller
   /on/{alias}:
     get:
       tags:
@@ -48,7 +48,7 @@ paths:
               schema:
                 type: boolean
                 x-content-type: application/json
-      x-openapi-router-controller: swagger_server.controllers.power_on_controller
+      x-openapi-router-controller: voltcraft_api.controllers.power_on_controller
   /off/{alias}:
     get:
       tags:
@@ -73,7 +73,7 @@ paths:
               schema:
                 type: boolean
                 x-content-type: application/json
-      x-openapi-router-controller: swagger_server.controllers.power_off_controller
+      x-openapi-router-controller: voltcraft_api.controllers.power_off_controller
   /info/{alias}:
     get:
       tags:
@@ -97,7 +97,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/inline_response_200'
-      x-openapi-router-controller: swagger_server.controllers.info_controller
+      x-openapi-router-controller: voltcraft_api.controllers.info_controller
 components:
   schemas:
     Outlet:
