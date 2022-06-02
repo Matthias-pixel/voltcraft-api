@@ -2,13 +2,13 @@
 
 import connexion
 
-from swagger_server import encoder
+from voltcraft_api import encoder
 
 
 def main():
     app = connexion.App(__name__, specification_dir='./swagger/')
     app.app.json_encoder = encoder.JSONEncoder
-    app.add_api('swagger.yaml', arguments={'title': 'Sample API'}, pythonic_params=True)
+    app.add_api('swagger.yaml', arguments={'title': 'Voltcraft API'}, pythonic_params=True)
     app.run(port=8080)
 
 

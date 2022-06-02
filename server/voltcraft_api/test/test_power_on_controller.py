@@ -5,20 +5,19 @@ from __future__ import absolute_import
 from flask import json
 from six import BytesIO
 
-from swagger_server.models.outlet import Outlet  # noqa: E501
-from swagger_server.test import BaseTestCase
+from voltcraft_api.test import BaseTestCase
 
 
-class TestListController(BaseTestCase):
-    """ListController integration test stubs"""
+class TestPowerOnController(BaseTestCase):
+    """PowerOnController integration test stubs"""
 
-    def test_list_outlets(self):
-        """Test case for list_outlets
+    def test_power_on(self):
+        """Test case for power_on
 
-        Returns a list of all outlets.
+        turns on an outlet.
         """
         response = self.client.open(
-            '/v1/list',
+            '/v1/on/{alias}'.format(alias='alias_example'),
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))

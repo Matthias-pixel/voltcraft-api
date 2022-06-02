@@ -32,7 +32,7 @@ $ cd server
 
 2. Start server
 ```
-$ python3 -m swagger_server
+$ python3 -m voltcraft_api
 ```
 
 ## Usage

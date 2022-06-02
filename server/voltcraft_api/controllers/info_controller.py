@@ -1,7 +1,7 @@
 import connexion
 import six
-from swagger_server.models.inline_response200 import InlineResponse200  # noqa: E501
-from swagger_server import util
+from voltcraft_api.models.inline_response200 import InlineResponse200  # noqa: E501
+from voltcraft_api import util
 from connections import UnknownAliasException, get_address, get_device
 
 def get_info(alias):  # noqa: E501
