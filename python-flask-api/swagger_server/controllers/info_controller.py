@@ -1,7 +1,5 @@
 import connexion
 import six
-from sem6000 import sem6000
-from sem6000.bluetooth_lowenergy_interface.bluepy_interface import BluePyBtLeInterface
 from swagger_server.models.inline_response200 import InlineResponse200  # noqa: E501
 from swagger_server import util
 from connections import UnknownAliasException, get_address, get_device
