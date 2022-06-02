@@ -1,7 +1,5 @@
 import yaml
-from sem6000 import sem6000
-from sem6000.bluetooth_lowenergy_interface.bluepy_interface import BluePyBtLeInterface
-
+from sem6000.sem6000 import sem6000
 
 if not "devices" in globals():
     devices = {}
