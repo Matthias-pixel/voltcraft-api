@@ -25,3 +25,10 @@ def get_device(addr):
         devices[addr] = sem6000.SEM6000(deviceAddr=addr, timeout=3)
         devices[addr].authorize("0000")
     return devices[addr]
+
+def pre_connect():
+    for addr in outlets.values():
+        devices[addr] = sem6000.SEM6000(deviceAddr=addr, timeout=3)
+        devices[addr].authorize("0000")
+
+pre_connect()
