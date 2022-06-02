@@ -1,0 +1,117 @@
+swagger: "2.0"
+info:
+  title: Sample API
+  description: API description in Markdown.
+  version: 1.0.0
+host: api.example.com
+basePath: /v1
+schemes:
+  - https
+definitions:
+  Outlet:
+    type: object
+    properties:
+      mac-address:
+        type: string
+        description: Mac address of the outlet.
+      alias:
+        type: string
+        description: Alias of the outlet
+paths:
+  /list:
+    get:
+      summary: Returns a list of all outlets.
+      description: d
+      produces:
+        - application/json
+      operationId: listOutlets
+      tags:
+        - list
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Outlet'
+            
+
+  /on/{alias}:
+    get:
+      summary: turns on an outlet.
+      description: d
+      produces:
+        - application/json
+      operationId: powerOn
+      tags:
+        - powerOn
+      parameters:
+        - name: alias
+          in: path
+          description: outlet alias
+          type: string
+          required: true
+      responses:
+        200:
+          description: OK
+          schema:
+            type: boolean
+
+  /off/{alias}:
+    get:
+      summary: turns off an outlet.
+      description: d
+      produces:
+        - application/json 
+      operationId: powerOff
+      tags:
+        - powerOff
+      parameters:
+        - name: alias
+          in: path
+          description: outlet alias
+          type: string
+          required: true
+      responses:
+        200:
+          description: OK  
+          schema:
+            type: boolean
+
+  /info/{alias}:
+    get:
+      summary:  Returns measurement data from an outlet.
+      description: d
+      produces:
+        - application/json
+      operationId: getInfo
+      tags:
+        - info
+      parameters:
+        - name: alias
+          in: path
+          description: outlet alias
+          type: string
+          required: true
+      responses:
+        200:
+          description: OK   
+          schema:
+            type: object  
+            properties: 
+              current:
+                type: integer
+
+              frequency:
+                type: integer
+
+              active:
+                type: boolean
+
+              power:
+                type: integer
+
+              voltage:
+                type: integer
+
+               

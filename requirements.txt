@@ -1,0 +1,7 @@
+connexion >= 2.6.0
+connexion[swagger-ui] >= 2.6.0
+python_dateutil == 2.6.0
+setuptools >= 21.0.0
+swagger-ui-bundle >= 0.0.2
+bluepy >= 1.3.0
+#git+https://github.com/Matthias-pixel/python3-voltcraft-sem6000@fix-length-parsing#egg=sem6000
