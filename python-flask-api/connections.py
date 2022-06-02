@@ -11,8 +11,17 @@ if not "outlets" in globals():
         config = yaml.full_load(config_file)
         outlets = config["outlets"]
 
+class UnknownAliasException(Exception):
+    def __init__(self):
+        return
+
+def get_address(alias):
+    if not alias in outlets.keys():
+        raise UnknownAliasException()
+    return outlets[alias]
+
 def get_device(addr):
     if (not (addr in devices.keys())) or not devices[addr]._is_connected():
-        devices[addr] = sem6000.SEM6000(deviceAddr=addr)
+        devices[addr] = sem6000.SEM6000(deviceAddr=addr, timeout=3)
         devices[addr].authorize("0000")
     return devices[addr]
