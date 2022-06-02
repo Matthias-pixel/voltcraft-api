@@ -34,3 +34,17 @@ $ cd server
 ```
 $ python3 -m swagger_server
 ```
+
+## Usage
+### 1. Configure server
+1. Configure aliases in config.yaml
+
+### 2. Turn an outlet on
+    GET /v1/on/{alias}
+    replace {alias} with the outlet's alias
+### 3. Turn an outlet off
+    GET /v1/off{alias}
+### 4. Get measurement data
+    GET /v1/info/{alias}
+### 5. List all outlets from config.yaml
+    GET /v1/list
