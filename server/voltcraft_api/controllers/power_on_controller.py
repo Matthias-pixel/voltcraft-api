@@ -9,7 +9,9 @@ def power_on(alias):  # noqa: E501
         addr = get_address(alias)
         dev = get_device(addr)
         dev.power_on()
-        return True
+        response = make_response("true")
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response
     except UnknownAliasException:
         res = {
             "detail": "The requested alias does not exist. If you entered the URL manually please check your spelling and try again.",
@@ -21,4 +23,6 @@ def power_on(alias):  # noqa: E501
         response.headers['Access-Control-Allow-Origin'] = '*'
         return response
     except:
-        return False
+        response = make_response("false")
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response
