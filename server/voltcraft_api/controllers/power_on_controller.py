@@ -19,11 +19,11 @@ def power_on(alias):  # noqa: E501
             "title": "Not Found",
             "type": "about:blank"
         }
-        response = make_response(json.dumps(res, indent=3))
+        response = make_response(json.dumps(res, indent=3), 404)
         response.headers['Access-Control-Allow-Origin'] = '*'
         return response
     except:
         reconnect_device(alias)
-        response = make_response("false")
+        response = make_response("false", 500)
         response.headers['Access-Control-Allow-Origin'] = '*'
         return response

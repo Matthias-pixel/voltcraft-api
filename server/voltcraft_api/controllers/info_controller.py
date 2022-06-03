@@ -26,7 +26,7 @@ def get_info(alias):  # noqa: E501
             "title": "Not Found",
             "type": "about:blank"
         }
-        response = make_response(json.dumps(res, indent=3))
+        response = make_response(json.dumps(res, indent=3), 404)
         response.headers['Access-Control-Allow-Origin'] = '*'
         return response
     except:
@@ -37,7 +37,7 @@ def get_info(alias):  # noqa: E501
             "title": "Internal Server Error",
             "type": "about:blank"
         }
-        response = make_response(json.dumps(res, indent=3))
+        response = make_response(json.dumps(res, indent=3), 500)
         response.headers['Access-Control-Allow-Origin'] = '*'
         return response
           
