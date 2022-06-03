@@ -1,7 +1,7 @@
 import json
 from flask import make_response
 from voltcraft_api import util
-from connections import get_address, get_device, UnknownAliasException
+from connections import get_address, get_device, reconnect_device, UnknownAliasException
 
 def power_on(alias):  # noqa: E501 
     global outlets, devices  
@@ -23,6 +23,7 @@ def power_on(alias):  # noqa: E501
         response.headers['Access-Control-Allow-Origin'] = '*'
         return response
     except:
+        reconnect_device(alias)
         response = make_response("false")
         response.headers['Access-Control-Allow-Origin'] = '*'
         return response

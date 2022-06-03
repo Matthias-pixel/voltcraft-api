@@ -1,6 +1,6 @@
 import json, flask
 from voltcraft_api import util
-from connections import get_address, get_device, UnknownAliasException
+from connections import get_address, get_device, reconnect_device, UnknownAliasException
 
 def power_off(alias):  
     try:
@@ -21,4 +21,5 @@ def power_off(alias):
         response.headers['Access-Control-Allow-Origin'] = '*'
         return response
     except:
+        reconnect_device(alias)
         return False

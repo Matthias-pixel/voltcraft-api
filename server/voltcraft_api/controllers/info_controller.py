@@ -2,7 +2,7 @@ import json
 from flask import make_response
 from voltcraft_api.models.inline_response200 import InlineResponse200  # noqa: E501
 from voltcraft_api import util
-from connections import UnknownAliasException, get_address, get_device
+from connections import UnknownAliasException, reconnect_device, get_address, get_device
 
 def get_info(alias):  # noqa: E501
     try:
@@ -30,6 +30,7 @@ def get_info(alias):  # noqa: E501
         response.headers['Access-Control-Allow-Origin'] = '*'
         return response
     except:
+        reconnect_device(alias)
         res = {
             "detail": "Could not connect to outlet.",
             "status": 500,
