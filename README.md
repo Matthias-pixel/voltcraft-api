@@ -40,12 +40,12 @@ $ python3 -m voltcraft_api
 ```
 
 ### Use API
-1. Turn an outlet on
+#### 1. Turn an outlet on
     GET /v1/on/{alias}
     replace {alias} with the outlet's alias
-2. Turn an outlet off
+#### 2. Turn an outlet off
     GET /v1/off{alias}
-3. Get measurement data
+#### 3. Get measurement data
     GET /v1/info/{alias}
-4. List all outlets from config.yaml
+#### 4. List all outlets from config.yaml
     GET /v1/list
