@@ -1,6 +1,4 @@
-import connexion
-import six
-import time
+import json, flask
 from voltcraft_api import util
 from connections import get_address, get_device, UnknownAliasException
 
@@ -9,13 +7,18 @@ def power_off(alias):
         addr = get_address(alias)
         dev = get_device(addr)
         dev.power_off()
-        return True
+        response = flask.make_response("true")
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response
     except UnknownAliasException:
-        return {
+        res = {
             "detail": "The requested alias does not exist. If you entered the URL manually please check your spelling and try again.",
             "status": 404,
             "title": "Not Found",
             "type": "about:blank"
         }
+        response = flask.make_response(json.dumps(res, indent=3))
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response
     except:
         return False
