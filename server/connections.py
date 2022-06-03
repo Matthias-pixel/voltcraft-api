@@ -1,5 +1,6 @@
 import yaml, sys
 from sem6000.sem6000 import sem6000
+from time import sleep
 
 if not "devices" in globals():
     devices = {}
@@ -35,6 +36,7 @@ def pre_connect():
                 break
             except:
                 print(f"Could not connect to outlet {alias} with mac address {addr}. Retry ({retry}/{max_retries})")
+                sleep(5)
                 if retry == max_retries:
                     sys.stderr.write(f"Could not connect to outlet {alias} with mac address {addr} after {max_retries} attempts. Aborting.\n")
                     sys.exit(1)
@@ -45,6 +47,8 @@ def reconnect_device(alias):
     addr = outlets[alias]
     for retry in range(1, max_retries+1):
         try:
+            devices[addr].disconnect()
+            sleep(5)
             devices[addr] = sem6000.SEM6000(deviceAddr=addr, timeout=3)
             devices[addr].authorize("0000")
             break
